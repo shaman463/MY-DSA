@@ -2,34 +2,35 @@
 #include<vector>
 #include<algorithm>
 
-using namespace std; 
+using namespace std;
 
-int Are_a(vector<int>& arr){
+int area(vector<int>&height){
     int left = 0;
-    int right = arr.size()-1;
-    int max_water = 0;
+    int right = height.size()-1;
+    int conatiner = INT_MIN;
 
     while(left<right){
-        int width = right - left;
-        int area = min(arr[left], arr[right])*width;
+        int breadth = right - left;
+        int area = min(height[left],height[right])*breadth;
 
-        max_water = max(max_water, area);
+        conatiner = max(area,conatiner);
 
-        if (arr[left] < arr[right]) {
-            left++;
-        } else {
+        if(height[right]<height[left]){
             right--;
         }
+        else{
+            left++;
+        }
     }
-    return max_water;
+    return conatiner;
 }
 
 int main(){
 
-    vector<int> arr = {1,3,5,7,9};
-    int result = Are_a(arr);
+    vector<int> height = {1,8,6,2,5,4,8,3,7};
 
-    cout<<result<<endl;
+    int answer = area(height);
+    cout<<answer<<endl;
 
     return 0;
 }
