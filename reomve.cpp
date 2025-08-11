@@ -28,7 +28,5 @@ int main(){
         cout<<num[i];
     }
 
-
-
     return 0;
 }
